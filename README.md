@@ -5,5 +5,6 @@
 
 ##使用
  - clone下来
+ - cd smallVue
  - npm install 
  - npm run dev
