@@ -1,12 +1,19 @@
 <template id="template">
-	<div class="num">{{count}}<transition @enter="enter" @leave="leave"><span class="addNum" v-show="isClick">+1</span></transition></div>
+	<div class="num">
+		{{count}}
+		<transition @enter="enter" @leave="leave">
+			<span class="addNum" v-show="isClick">+1</span>
+		</transition>
+	</div>
 </template>
 
 <script>
 import Vue from 'vue'
 
 export default Vue.component('num',{
-	props:['count'],
+	props:{
+		'count':Number
+	},
 	data: function(){
 		return {
 			isClick : false
@@ -29,7 +36,7 @@ export default Vue.component('num',{
 })
 </script>
 
-<style scoped>
+<style>
 	/*动画 */
 	@keyframes changeBig{
 		0% {

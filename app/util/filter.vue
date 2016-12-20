@@ -1,7 +1,8 @@
-const getToDay = num => {
+<script>
+import Vue from 'vue'
+Vue.filter('getToDay',function(value){
 	let n = "";
-	console.log(num)
-	switch (num) {
+	switch (value) {
 		case 1:
 			n = "Monday"
 			break;
@@ -28,6 +29,5 @@ const getToDay = num => {
 			break;
 	}
 	return n;
-}
-
-export default getToDay;
+})
+</script>

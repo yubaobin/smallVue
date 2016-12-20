@@ -15,7 +15,7 @@ var autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var uglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 
-var port = 8080;
+var port = 8081;
 
 var projectRoot = path.resolve(__dirname);
 var appPath = path.resolve(__dirname, './app/');
@@ -24,7 +24,12 @@ module.exports = function() {
 
     //入口文件配置
     config.entry = {
-        app: path.resolve(appPath, 'app'),
+        // filter: path.resolve(appPath, 'util/filter'),
+        app: [
+            path.resolve(appPath, 'util/filter'),
+            path.resolve(appPath, 'util/directive'),
+            path.resolve(appPath, 'app')
+        ], //合并
         //page2: ['./page2.js', './page3.js'] //支持数组形式，将加载数组中的所有模块，但以最后一个模块作为输出
     };
 
@@ -43,6 +48,7 @@ module.exports = function() {
         hot: false,
         inline: true,
         grogress: true,
+        port:port
     };
 
     //加载器配置
@@ -75,6 +81,9 @@ module.exports = function() {
             loader: 'babel',
             include: projectRoot,
             exclude: /node_modules/
+        },{
+            test: /\.scss$/,
+            loader: ExtractTextPlugin.extract("style", 'css!sass')
         }]
     };
 
@@ -94,11 +103,11 @@ module.exports = function() {
 
     //插件项
     config.plugins = [
-        new uglifyJsPlugin({
-            compress: {
-                warnings: false
-            }
-        }),
+        // new uglifyJsPlugin({
+        //     compress: {
+        //         warnings: false
+        //     }
+        // }),
         new HtmlWebpackPlugin({
             title: 'demo', //设置title的名字
             filename: 'index.html', //设置这个html的文件名 
