@@ -36,6 +36,7 @@
     "url-loader": "^0.5.7",
     "vue-loader": "^9.5.1",
     "vue-style-loader": "^1.0.0",
+    "vuex": "^2.1.1",
     "webpack": "^1.13.3",
     "webpack-dev-server": "^1.16.2"
   }

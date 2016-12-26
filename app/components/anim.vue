@@ -141,18 +141,18 @@ export default Vue.component('anim',{
 <style>
 .fade-enter-active {
   opacity: 1;
-  transition: all .5s
+  transition: all .5s;
 }
 .fade-leave {
   color: #EADABA;
 }
 .fade-enter {
   opacity: 0;
-  transition: all .5s
+  transition: all .5s;
 }	
 .fade-leave-active {
   opacity: 0;
-  transition: all .5s
+  transition: all .5s;
 }
 
 .move-enter {

@@ -5,6 +5,7 @@ import active from '../components/active'
 import anim from '../components/anim'
 import directive from '../components/myDirective'
 import mixin from '../components/mixins'
+import vuex from '../components/myvuex'
 Vue.use(VueRouter);//使用路由
 const routes = [
   { 
@@ -22,6 +23,9 @@ const routes = [
   },{
     path: "/mixin",
     component:mixin
+  },{
+    path: "/vuex",
+    component:vuex
   }
 ]
 const router = new VueRouter({
