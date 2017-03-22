@@ -5,17 +5,22 @@
 		<button @click="go('school')">school</button>
 		<button @click="go('work')">work</button>
 		<button @click="go('once')">once</button>
+		<vue-drr :w='180' :h='180' :r='0' :rotatable='true' v-on:change="showchange">
+		    I can be dragged anywhere
+		</vue-drr>
 		<keep-alive>
 			<transition name="fade" mode="out-in">
 				<component :is="active" :parent="message"></component>
 			</transition name="fade">
 		<keep-alive>
+		
 	</div>
 </template>
 
 <script>
 import Vue from 'vue';
 import childrenSlot from './childrenSlot'
+import VueDRR from 'vue-drag-resize-rotate'
 
 export default Vue.component('active',{
 	data:function(){
@@ -35,6 +40,7 @@ export default Vue.component('active',{
 				console.log('deactivated')
 			}
 		},
+		'vue-drr': VueDRR,
 		school:{
 			props:['parent'],
 			data:function(){
@@ -59,7 +65,10 @@ export default Vue.component('active',{
 		go:function(url){
 			console.log(url)
 			this.active = url;
-		}
+		},
+		showchange: function (data) {
+	      console.log("====",JSON.stringify(data))
+	    }
 	}
 })
 </script>

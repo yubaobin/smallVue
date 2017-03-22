@@ -84,6 +84,9 @@ module.exports = function() {
         },{
             test: /\.scss$/,
             loader: ExtractTextPlugin.extract("style", 'css!sass')
+        },{
+            test: /\.css$/,
+            loader: 'style-loader!css-loader'
         }]
     };
 
@@ -118,7 +121,8 @@ module.exports = function() {
             cache: false, //是否缓存
             showErrors: false //显示错误
         }),
-        new OpenBrowserPlugin({ url: 'http://localhost:' + port })
+        new OpenBrowserPlugin({ url: 'http://localhost:' + port }),
+        new ExtractTextPlugin("styles.css")
     ];
 
 

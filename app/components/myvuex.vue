@@ -2,7 +2,7 @@
 	<div>
 		<p>{{msg}}</p>
 		<p>{{msgAlias}}</p>
-		<p>{{sameName}}</p>
+		<p>{{same}}</p>
 		<p>{{addOne}}</p>
 		<p>{{addOneReName}}</p>
 		<p>{{mult}}</p>
@@ -39,7 +39,10 @@ import { mapActions } from 'vuex'
 			});
 			this.$store.commit('ybb');
 			this.$store.dispatch('actionName')
-			console.log("123",this.$store.state.a.numA)
+			console.log("moduleA",this.$store.state.a.numA)
+			console.log("moduleB",this.$store.getters['todos/DONE_COUNT']);
+			this.$store.commit('bMutations');
+			this.$store.dispatch('bAction');
 		},
 		computed: {
 			msg(){
@@ -51,11 +54,13 @@ import { mapActions } from 'vuex'
 			mult() {
 				return this.$store.getters.mult
 			},
-			...mapState([
-				'sameName',
+			...mapState([ 
 				'name',
 				'age'
 			]),
+			...mapState({
+				same:'sameName'
+			}),
 			...mapGetters({
 				'addOneReName':'addOne'
 			})

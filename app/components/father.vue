@@ -5,7 +5,7 @@
 		<!-- 等价于下面 -->
 		<!-- <childrenModel :items="items" @father="fatherMethod" :value="message" @input="onInput"></childrenModel> -->
 
-		<childrenSlot v-for="item in items" :item="item">
+		<childrenSlot v-for="item in items" :item="item" data="123">
 			<p slot="header">显示父组件的头部</p>
 			<p slot="footer">显示父组件的脚部</p>
 			<!-- <li slot="item">从子组件获取的数据</li> --> <!-- vue会发警告 -->

@@ -6,6 +6,7 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex);
 const YBB = 'ybb';
+console.log("========",process.env)
 const moduleA = {
   state: {
     numA:1
@@ -20,31 +21,48 @@ const moduleA = {
 
   }
 }
+
 const moduleB = {
   state: {
-
+    numB:2
   },
   mutations: {
-
+    bMutations (state,option) {
+      console.log('bMutations');
+    }
   },
   actions: {
-
+    bAction(context) {
+      console.log("bAction",context.rootState.vuexMsg);
+    }
   },
   getters: {
-    
+    getRootGetters: (state,getters,rootState) => {
+      console.log("rootGetters",rootState.vuexMsg);
+      return rootState.vuexMsg;
+    },
+    ['todos/DONE_COUNT']:(state) => 'todos/DONE_COUNT'
   }
+}
+
+const myPlus = store => {
+  store.subscribe((mutation, state) => {// 每次 mutation 之后调用
+    console.log("插件",mutation)
+  })
 }
 const store = new Vuex.Store({
   modules: {
     a: moduleA,
     b: moduleB
   },
+  plugins:[myPlus],
   state: {
     vuexMsg:'根节点的信息',
     sameName: '组件名和state的名字相同',
     count:0,
     name:'ybb',
-    age:0
+    age:0,
+    numA: "numA"
   },
   mutations: {
     increment (state,option){
@@ -64,10 +82,18 @@ const store = new Vuex.Store({
       state.age = state.age + "改变了";
     },
     add (state,option){
+      let age = state.age;
+      if(Object.getPrototypeOf(state.age) !== Number.prototype){
+        state.age = parseInt(age.substring(0,1)); 
+      }
       state.age +=parseInt(option.num)
     },
     minus (state,option){
-      state.age -=parseInt(option.num)
+      let age = state.age;
+      if(Object.getPrototypeOf(state.age) !== Number.prototype){
+        state.age = parseInt(age.substring(0,1)); 
+      }
+      state.age -=parseInt(option.num);
     }
   },
   getters: {
@@ -114,6 +140,7 @@ var app = new Vue({
         <router-link to="/directive">Go to directive</router-link>
         <router-link to="/mixin">Go to mixin</router-link>
         <router-link to="/vuex">Go to vuex</router-link>
+        <router-link to="/highlight">Go to highlight</router-link>
         </div>
   			<router-view></router-view>
 		</div>`,
