@@ -4,12 +4,20 @@
 			<li v-for="item in items" @click="clickli">{{item.name}}</li>
 		</ul>
 		<input :value="value" @input="onInput"/>
+		<input type="checkbox" :value="1" v-model="checkModel" />
+		<input type="checkbox" :value="2" v-model="checkModel" />
+		{{ checkModel }}
 	</div>
 </template>
 
 <script>
 import Vue from 'vue'
 export default Vue.component('childrenModel',{
+		data () {
+			return {
+				checkModel: [1],
+			}
+		},
 		props:{
 			items:Array,
 			value:null
