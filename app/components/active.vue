@@ -1,7 +1,7 @@
 <template id="active">
 	<div>
 		动态组件
-		<button @click="go('home')">home</button>
+		<!-- <button @click="go('home')">home</button>
 		<button @click="go('school')">school</button>
 		<button @click="go('work')">work</button>
 		<button @click="go('once')">once</button>
@@ -12,8 +12,11 @@
 			<transition name="fade" mode="out-in">
 				<component :is="active" :parent="message"></component>
 			</transition name="fade">
-		<keep-alive>
-		
+		<keep-alive> -->
+		<bottom-nav >
+	      <item-nav @click="note" index="1"><p>笔记</p></item-nav>
+	      <item-nav @click="person" index="2"><p>我的</p></item-nav>
+	    </bottom-nav>
 	</div>
 </template>
 
@@ -68,6 +71,12 @@ export default Vue.component('active',{
 		},
 		showchange: function (data) {
 	      console.log("====",JSON.stringify(data))
+	    },
+	    note() {
+	    	console.log('笔记')
+	    },
+	    person() {
+	    	console.log('我的')
 	    }
 	}
 })

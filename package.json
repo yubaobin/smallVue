@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "vue": "^2.0.1",
+    "vue-awsome-dropmenu": "^1.5.0",
     "vue-drag-resize-rotate": "^2.0.8",
     "vue-resource": "^1.0.3",
     "vue-router": "^2.0.2",
@@ -35,6 +36,7 @@
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
+    "vue-bottom-nav": "^1.0.4",
     "vue-loader": "^9.5.1",
     "vue-style-loader": "^1.0.0",
     "vuex": "^2.1.1",

@@ -3,7 +3,9 @@ import Vue from 'vue'
 import datetime from './components/datetime'
 import {router} from './util/routeConfig'
 import Vuex from 'vuex'
+import BottomNav from 'vue-bottom-nav'
 
+Vue.use(BottomNav);
 Vue.use(Vuex);
 const YBB = 'ybb';
 console.log("========",process.env)
